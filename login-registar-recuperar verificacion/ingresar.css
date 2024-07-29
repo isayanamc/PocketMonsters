@@ -1,0 +1,57 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+.divInputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.mainIngresar{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0px;
+    width: 400px;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.divCentrar{
+    display: flex; 
+    justify-content: space-around; 
+    flex-direction: column;
+}
+
+.inputIngresar {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+}
+
+.columnas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tituloRegistro {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-around;
+}
+
+#ingresar{
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #FF5A6A;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}

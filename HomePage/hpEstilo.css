@@ -1,0 +1,25 @@
+/* Estilos para la bienvenida*/
+.botonesInicio {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    padding: 15px; /* Agrega un poco de espacio alrededor del texto */
+    flex-direction: row;
+    justify-content: stretch; /* Centra el contenido horizontalmente */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+    max-width: 8000px; /* Limita el ancho máximo del contenedor */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+    gap: 80px;
+}
+
+.bienvenida h2 {
+    font-size: 36px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0; /* Elimina el margen predeterminado del h2 */
+    padding: 10px; /* Espacio interno adicional dentro del marco */
+}
+
+

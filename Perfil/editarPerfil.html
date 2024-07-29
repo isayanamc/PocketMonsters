@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="headerStyle.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="./home.html">
+                    <img src="logo.png" alt="icono de pagina" id="iconoPagina">
+               </a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="ingresar.html" class="botonesHeader">Iniciar sesión</a>
+                <a href="./registrar.html" class="botonesHeader">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <h1>Editar Perfil</h1>
+        <form id="form-editar-perfil">
+            <div>
+                <label for="nuevo-nombre-usuario">Nuevo Nombre de Usuario:</label>
+                <input type="text" id="nuevo-nombre-usuario" placeholder="Nuevo nombre de usuario">
+            </div>
+            <div>
+                <label for="nueva-foto-perfil">Nueva Foto de Perfil:</label>
+                <input type="file" id="nueva-foto-perfil">
+            </div>
+            <button type="button" onclick="guardarCambios()">Guardar Cambios</button>
+        </form>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        function guardarCambios() {
+            const nuevoNombre = document.getElementById('nuevo-nombre-usuario').value;
+            const nuevaFoto = document.getElementById('nueva-foto-perfil').files[0];
+
+            if (nuevoNombre) {
+                localStorage.setItem('nombreUsuario', nuevoNombre);
+            }
+
+            if (nuevaFoto) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    localStorage.setItem('fotoPerfil', e.target.result);
+                }
+                reader.readAsDataURL(nuevaFoto);
+            }
+
+            alert('Perfil actualizado');
+            window.location.href = 'perfil.html';
+        }
+    </script>
+</body>
+</html>

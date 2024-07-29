@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="headerStyle.css">
+</head>
+<body>
+   
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="./home.html">
+                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
+               </a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="ingresar.html" class="botonesHeader">Iniciar sesión</a>
+                <a href="registrar.html" class="botonesHeader">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <h1>Amigos</h1>
+        <div id="lista-amigos">
+          
+        </div>
+        <div>
+            <h2>Buscar Usuarios</h2>
+            <input type="text" id="buscar-usuario" placeholder="Buscar usuario...">
+            <button onclick="buscarUsuarios()">Buscar</button>
+            <div id="resultados-busqueda"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        function buscarUsuarios() {
+            
+            const buscarUsuarioInput = document.getElementById('buscar-usuario').value;
+            const resultadosBusquedaDiv = document.getElementById('resultados-busqueda');
+            resultadosBusquedaDiv.innerHTML = `<p>Buscando usuarios con el término: ${buscarUsuarioInput}</p>`;
+        }
+    </script>
+</body>
+</html>
+

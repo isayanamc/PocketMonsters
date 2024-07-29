@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos Pokémon</title>
+    <link rel="stylesheet" href="habilidadespokemon.css">
+    <link rel="stylesheet" href="./headerStyle.css"> <!-- Enlace al CSS del header -->
+    <link rel="icon" href="./logo.png" type="image/x-icon"> <!-- Favicon -->
+</head>
+<body>
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="./homePage.html">
+                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
+               </a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="ingresar.html" class="botonesHeader">Iniciar sesión</a>
+                <a href="./registrar.html" class="botonesHeader">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="titulo">Creador de Equipos Pokémon</h1>
+
+        <div class="opciones">
+            <div class="crear-equipo">
+                <h2>Crear Equipo Nuevo</h2>
+                <form id="formularioEquipo">
+                    <label for="nombreEquipo">Nombre del Equipo:</label>
+                    <input type="text" id="nombreEquipo" required><br><br>
+
+                    <label for="pokemon">Selecciona un Pokémon:</label>
+                    <select id="pokemon" required>
+                        <option value="">Selecciona...</option>
+                        <option value="pikachu">Pikachu</option>
+                        <option value="bulbasaur">Bulbasaur</option>
+                        <option value="spyduck">Spyduck</option>
+                        <option value="squirtle">Squirtle</option>
+                        <option value="rattata">Rattata</option>
+                        <option value="chrizard">Chrizard</option>
+                        <option value="charmander">Charmander</option>
+                    </select><br><br>
+
+                    <label for="fuerza">Fuerza:</label>
+                    <select id="fuerza" required>
+                        <option value="">Selecciona...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select><br><br>
+
+                    <label for="velocidad">Velocidad:</label>
+                    <select id="velocidad" required>
+                        <option value="">Selecciona...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select><br><br>
+
+                    <label for="edad">Edad:</label>
+                    <select id="edad" required>
+                        <option value="">Selecciona...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select><br><br>
+
+                    <button type="submit">Crear Equipo</button>
+                </form>
+            </div>
+
+            <div class="escoger-equipos">
+                <h2>Escoger Equipo</h2>
+                <table id="tablaEquipos">
+                    <tbody id="listaEquipos">
+                        <!-- Aquí se mostrarán dinámicamente los equipos -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="habilidadespokemon.js"></script>
+</body>
+</html>

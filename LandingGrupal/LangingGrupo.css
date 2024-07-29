@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logogrupal {
+    width: 150px; /* Ancho deseado del logo */
+    height: auto; /* Para mantener la proporción */
+    max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+    display: block; /* Asegura que sea un bloque para centrarlo */
+    margin: 0 auto; /* Centra horizontalmente */
+}
+
+.headerr {
+    background-color: #002366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px; 
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    z-index: 1;
+}
+
+h1, h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #002366;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 20px; /* Añade margen superior a los encabezados h2 */
+    margin-bottom: 10px; /* Añade margen inferior a los encabezados h2 */
+}
+
+.info, .team {
+    margin-bottom: 20px;
+}
+
+p, li {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li strong {
+    color: #c8102e;
+}

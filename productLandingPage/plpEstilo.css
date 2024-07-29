@@ -1,0 +1,40 @@
+/* Estilos para la bienvenida*/
+.bienvenida {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 20px;
+    padding: 12px; /* Agrega un poco de espacio alrededor del texto */
+
+    background-color: #f0f0f0; /* Color de fondo opcional para el marco */
+    border: 5px solid #007bff; /* Color y grosor del marco */
+    border-radius: 9px; /* Bordes redondeados del marco */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+    max-width: 800px; /* Limita el ancho máximo del contenedor */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+}
+
+.bienvenida h2 {
+    font-size: 36px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0; /* Elimina el margen predeterminado del h2 */
+    padding: 10px; /* Espacio interno adicional dentro del marco */
+}
+
+.banner {
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    gap: 10px; /* Espacio entre las imágenes */
+    padding: 20px;
+    background-color: #f0f0f0; /* Fondo opcional para el banner */
+}
+
+.banner-image {
+    width: 2000px; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la proporción de las imágenes */
+}
