@@ -1,0 +1,392 @@
+[{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e42"
+  },
+  "Name": "Bulbasaur",
+  "HP": 45,
+  "Attack": 49
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e43"
+  },
+  "Name": "Ivysaur",
+  "HP": 60,
+  "Attack": 62
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e44"
+  },
+  "Name": "Venusaur",
+  "HP": 80,
+  "Attack": 82
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e45"
+  },
+  "Name": "Charmander",
+  "HP": 39,
+  "Attack": 52
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e46"
+  },
+  "Name": "Charmeleon",
+  "HP": 58,
+  "Attack": 64
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e47"
+  },
+  "Name": "Charizard",
+  "HP": 78,
+  "Attack": 84
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e48"
+  },
+  "Name": "Squirtle",
+  "HP": 44,
+  "Attack": 48
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e49"
+  },
+  "Name": "Wartortle",
+  "HP": 59,
+  "Attack": 63
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e4a"
+  },
+  "Name": "Blastoise",
+  "HP": 79,
+  "Attack": 83
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e4b"
+  },
+  "Name": "Caterpie",
+  "HP": 45,
+  "Attack": 30
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e4c"
+  },
+  "Name": "Metapod",
+  "HP": 50,
+  "Attack": 20
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e4d"
+  },
+  "Name": "Butterfree",
+  "HP": 60,
+  "Attack": 45
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e4e"
+  },
+  "Name": "Weedle",
+  "HP": 40,
+  "Attack": 35
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e4f"
+  },
+  "Name": "Kakuna",
+  "HP": 45,
+  "Attack": 25
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e50"
+  },
+  "Name": "Beedrill",
+  "HP": 65,
+  "Attack": 90
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e51"
+  },
+  "Name": "Pidgey",
+  "HP": 40,
+  "Attack": 45
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e52"
+  },
+  "Name": "Pidgeotto",
+  "HP": 63,
+  "Attack": 60
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e53"
+  },
+  "Name": "Pidgeot",
+  "HP": 83,
+  "Attack": 80
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e54"
+  },
+  "Name": "Rattata",
+  "HP": 30,
+  "Attack": 56
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e55"
+  },
+  "Name": "Raticate",
+  "HP": 55,
+  "Attack": 81
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e56"
+  },
+  "Name": "Spearow",
+  "HP": 40,
+  "Attack": 60
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e57"
+  },
+  "Name": "Fearow",
+  "HP": 65,
+  "Attack": 90
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e58"
+  },
+  "Name": "Ekans",
+  "HP": 35,
+  "Attack": 60
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e59"
+  },
+  "Name": "Arbok",
+  "HP": 60,
+  "Attack": 85
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e5a"
+  },
+  "Name": "Pikachu",
+  "HP": 35,
+  "Attack": 55
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e5b"
+  },
+  "Name": "Raichu",
+  "HP": 60,
+  "Attack": 90
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e5c"
+  },
+  "Name": "Sandshrew",
+  "HP": 50,
+  "Attack": 75
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e5d"
+  },
+  "Name": "Sandslash",
+  "HP": 75,
+  "Attack": 100
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e5e"
+  },
+  "Name": "Nidoran♀",
+  "HP": 55,
+  "Attack": 47
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e5f"
+  },
+  "Name": "Nidorina",
+  "HP": 70,
+  "Attack": 62
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e60"
+  },
+  "Name": "Nidoqueen",
+  "HP": 90,
+  "Attack": 92
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e61"
+  },
+  "Name": "Nidoran♂",
+  "HP": 46,
+  "Attack": 57
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e62"
+  },
+  "Name": "Nidorino",
+  "HP": 61,
+  "Attack": 72
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e63"
+  },
+  "Name": "Nidoking",
+  "HP": 81,
+  "Attack": 92
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e64"
+  },
+  "Name": "Clefairy",
+  "HP": 70,
+  "Attack": 45
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e65"
+  },
+  "Name": "Clefable",
+  "HP": 95,
+  "Attack": 70
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e66"
+  },
+  "Name": "Vulpix",
+  "HP": 38,
+  "Attack": 41
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e67"
+  },
+  "Name": "Ninetales",
+  "HP": 73,
+  "Attack": 76
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e68"
+  },
+  "Name": "Jigglypuff",
+  "HP": 115,
+  "Attack": 45
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e69"
+  },
+  "Name": "Wigglytuff",
+  "HP": 140,
+  "Attack": 70
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e6a"
+  },
+  "Name": "Zubat",
+  "HP": 40,
+  "Attack": 45
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e6b"
+  },
+  "Name": "Golbat",
+  "HP": 75,
+  "Attack": 80
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e6c"
+  },
+  "Name": "Oddish",
+  "HP": 45,
+  "Attack": 50
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e6d"
+  },
+  "Name": "Gloom",
+  "HP": 60,
+  "Attack": 65
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e6e"
+  },
+  "Name": "Vileplume",
+  "HP": 75,
+  "Attack": 80
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e6f"
+  },
+  "Name": "Paras",
+  "HP": 35,
+  "Attack": 70
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e70"
+  },
+  "Name": "Parasect",
+  "HP": 60,
+  "Attack": 95
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e71"
+  },
+  "Name": "Venonat",
+  "HP": 60,
+  "Attack": 55
+},
+{
+  "_id": {
+    "$oid": "66a847bc80534a76fcf83e72"
+  },
+  "Name": "Venomoth",
+  "HP": 70,
+  "Attack": 65
+}]

@@ -1,0 +1,23 @@
+.divEquipos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.divequipoDeJugador{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.divBotonAtacer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.botonAtacar{
+    width: 50%;
+    height: 40px;
+}

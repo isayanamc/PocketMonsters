@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "66a84f2f80534a76fcf83e79"
+  },
+  "name": "pablo",
+  "equipos": [
+    {
+      "primario": true,
+      "equipo1": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    },
+    {
+      "primario": false,
+      "equipo2": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    }
+  ]
+}]

@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "66b1656d60fc8a9e1ddd4a06"
+  },
+  "pablo": {
+    "victorias": 6,
+    "derrotas": 6,
+    "equipos": [
+      {
+        "primario": true,
+        "equipo1": [
+          "Squirtle",
+          "Jigglypuff",
+          "Nidorino",
+          "Wartortle",
+          "Charizard",
+          "Golbat"
+        ]
+      },
+      {
+        "primario": false,
+        "equipo2": [
+          "Squirtle",
+          "Jigglypuff",
+          "Nidorino",
+          "Wartortle",
+          "Charizard",
+          "Golbat"
+        ]
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "66b1662e60fc8a9e1ddd4a0a"
+  },
+  "jugador2": {
+    "victorias": 6,
+    "derrotas": 6,
+    "equipos": [
+      {
+        "primario": true,
+        "equipo1": [
+          "Squirtle",
+          "Jigglypuff",
+          "Nidorino",
+          "Wartortle",
+          "Charizard",
+          "Golbat"
+        ]
+      },
+      {
+        "primario": false,
+        "equipo2": [
+          "Squirtle",
+          "Jigglypuff",
+          "Nidorino",
+          "Wartortle",
+          "Charizard",
+          "Golbat"
+        ]
+      }
+    ]
+  }
+}]

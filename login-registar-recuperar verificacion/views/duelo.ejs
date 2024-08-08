@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        var resultado = <%- JSON.stringify(resultado) %>;
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duelo</title>
+    <link rel="stylesheet" href="../duelo.css">
+    <script src="../duelo.js" defer></script>
+</head>
+<body>
+    <div>
+        <div class="divEquipos">
+            <div>
+                <div class="divequipoDeJugador">
+                    <p><%= resultado.infoduelo.jugador1.nombreUsuario %></p>
+                    
+                    <% for (let i = 0; i < 6; i++) { %>
+                        <div>
+                            <input type="radio" id="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>" name="team1" value="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>""
+                            <label for="<%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %>"><%= resultado.infoduelo.jugador1.equipo[i.toString()].nombre %> HP: <%= resultado.infoduelo.jugador1.equipo[i.toString()].HP %></label>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div>
+                <div class="divequipoDeJugador">
+                    <p><%= resultado.infoduelo.jugador2.nombreUsuario %></p>
+                    
+                    <% for (let i = 0; i < 6; i++) { %>
+                        <div>
+                            <input type="radio" id="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>" name="team2" value="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>"
+                            <label for="<%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %>"><%= resultado.infoduelo.jugador2.equipo[i.toString()].nombre %> HP: <%= resultado.infoduelo.jugador2.equipo[i.toString()].HP %></label>
+                        </div>
+                    <% } %>
+                      
+                </div>
+            </div>
+        </div>
+        <div class="divBotonAtacer">
+            <button type="submit" id="botonAtacar" class="botonAtacar">Atacar</button>
+        </div>
+    </div> 
+
+</body>
+</html>
