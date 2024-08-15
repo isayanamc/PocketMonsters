@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        var resultado = <%- JSON.stringify(email) %>;
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pocket Monsters</title>
+    <title>Cambio de contraseña</title>
     <link rel="icon" href="./logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="./headerStyle.css">
-    <link rel="stylesheet" href="./ingresar.css">
-    <script src="./ingresar.js"></script>
+    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../registrar.css">
+    <script src="../forocambiarcontrasena.js"></script>
 </head>
 
 <body>
@@ -27,28 +30,27 @@
         <div class="divInputs">
             <div class="mainIngresar" id="mainIngresar">
                 <div class="tituloRegistro">
-                    <h3>Inicio de sesión</h3>
+                    <h3>Cambio de contraseña</h3>
                 </div>
                 <div class="columnas">
                     <div class="divCentrar">
-                        <label for="Email">Email:</label>
+                        <label for="Contraseña ">Nueva contraseña:</label>
                     </div>
                     <div class="divCentrar">
-                        <input type="text" name="" id="Email" class="inputIngresar">
+                        <input type="password" name="" id="contra1" class="inputIngresar">
                     </div>
                 </div>
                 <div class="columnas">
                     <div class="divCentrar">
-                        <label for="Contraseña ">Contraseña:</label>
+                        <label for="Contraseña ">Repita su nueva contraseña:</label>
                     </div>
                     <div class="divCentrar">
-                        <input type="password" name="" id="contra" class="inputIngresar">
+                        <input type="password" name="" id="contra2" class="inputIngresar">
                     </div>
                 </div>
                 <div>
-                    <button type="submit" id="ingresar">Iniciar Sesión</button>
+                    <button type="submit" id="registar">Cambiar contraseña</button>
                 </div>
-                <a href="/recuperarcontrasena">¿Olvidaste tu contraseña?</a>
                 <div id="failDiv"></div>
             </div>
         </div>
