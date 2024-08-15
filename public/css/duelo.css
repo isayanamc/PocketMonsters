@@ -1,0 +1,32 @@
+.divEquipos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.divequipoDeJugador{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+.divListaDePokemons{
+    margin: 10px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: lightgray; 
+    box-shadow: 5px 5px 5px grey;
+}
+
+.divBotonAtacer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 25px 0px;
+}
+
+.botonAtacar{
+    width: 50%;
+    height: 40px;
+    box-shadow: 5px 5px 5px grey;
+}

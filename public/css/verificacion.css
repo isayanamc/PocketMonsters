@@ -1,0 +1,10 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+.divPricipal{
+    width: 500px;    padding: 20px;
+    margin: 50px 0px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

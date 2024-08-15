@@ -1,0 +1,72 @@
+/* Estilos para la bienvenida*/
+.bienvenida {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 20px;
+    padding: 12px; /* Agrega un poco de espacio alrededor del texto */
+    background-color: #f0f0f0; /* Color de fondo opcional para el marco */
+    border: 5px solid #007bff; /* Color y grosor del marco */
+    border-radius: 9px; /* Bordes redondeados del marco */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+    max-width: 800px; /* Limita el ancho máximo del contenedor */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+	margin-bottom: 20px;
+}
+
+
+.banner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover; 
+	display: block;
+    margin: 20px 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Un fondo celeste claro */
+    color: #333; /* Texto en gris oscuro */
+}
+
+
+.bienvenida h2 {
+    text-align: center;
+    color: #FF5A6A; /* Color vibrante para el título */
+    margin: 20px 0;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* Adjust this value to position the button */
+}
+
+.btn-jugar {
+    background-color: #FF5A6A; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-jugar:hover {
+    background-color: #FF2D4A; /* Darker shade on hover */
+}
