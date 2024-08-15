@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+	<link rel="icon" href="./logo.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/public/css/headerStyle.css">
+	<link rel="stylesheet" href="./ingresar.css">
+    <script src="./ingresar.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="/productLandingPage.html">
+				<img src="./logo.png" alt="icono de pagina" id="iconoPagina">
+				</a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
+                <a href="/registrar" class="botonesHeader">Registrarse</a>
+				<a href="/recuperacionContra">Olvidaste contraseña?</a>
+            </div>
+        </div>
+    </header>
+        <div class="divInputs">
+            <div class="mainIngresar" id="mainIngresar">
+                <div class="tituloRegistro">
+                    <h3>Inicio de sesión</h3>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Email">Email:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="text" name="" id="Email" class="inputIngresar">
+                    </div>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Contraseña ">Contraseña:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="password" name="" id="contra" class="inputIngresar">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" id="ingresar">Iniciar Sesión</button>
+                </div>
+                <div id="failDiv"></div>
+            </div>
+        </div>
+
+</body>
+</html>

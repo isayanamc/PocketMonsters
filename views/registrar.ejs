@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel="icon" href="./logo.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/public/css/headerStyle.css">
+    <link rel="stylesheet" href="/public/css/registrar.css">
+    <script src="/public/js/registrar.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="iconosHeader">
+            <div class="divLogo">
+                <a href="/productLandingPage.html">
+				<img src="./logo.png" alt="icono de pagina" id="iconoPagina">
+				</a>
+            </div>
+           <div class="divBotonesHeader">
+                <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
+                <a href="/registrar" class="botonesHeader">Registrarse</a>
+            </div>
+        </div>
+    </header>
+        <div class="divInputs">
+            <div class="mainIngresar" id="mainIngresar">
+                <div class="tituloRegistro">
+                    <h3>Registro de usuario</h3>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="userNmobre">Nombre de usuario:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="text" name="" id="userNombre" class="inputIngresar">
+                    </div>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Contraseña ">Contraseña:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="password" name="" id="contra1" class="inputIngresar">
+                    </div>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Contraseña ">Repita su Contraseña:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="password" name="" id="contra2" class="inputIngresar">
+                    </div>
+                </div>
+                <div class="columnas">
+                    <div class="divCentrar">
+                        <label for="Email">Email:</label>
+                    </div>
+                    <div class="divCentrar">
+                        <input type="text" name="" id="Email" class="inputIngresar">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" id="registar">Registar</button>
+                </div>
+                <div id="failDiv"></div>
+            </div>
+        </div>
+
+</body>
+</html>
