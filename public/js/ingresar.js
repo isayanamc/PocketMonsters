@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             const emailTesteado = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
             if (emailTesteado){
                 document.getElementById('failDiv').innerHTML = "";
-                fetch(`http://localhost:3000/validaringreso?email=${email}&contra=${contra}`)
+                fetch(`http://localhost:8080/validaringreso?email=${email}&contra=${contra}`)
                 .then(resultado => resultado.json())
                 .then(resultado =>{
                     if (resultado['existe']){

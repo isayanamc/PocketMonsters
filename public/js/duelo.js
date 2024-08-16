@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     let intervalId;
 
     async function actualizardatos (){
-        fetch(`http://localhost:3000/actualizardatos/duelo?numeroDuelo=${id}`)
+        fetch(`http://localhost:8080/actualizardatos/duelo?numeroDuelo=${id}`)
         .then(response => response.json())
         .then (result => {
             // Verifica si el turno es par y si usuario es el jugador1
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         if (pokemonJugador1 && pokemonJugador2) {
             console.log(pokemonJugador1.value);
             console.log("Jugador 2:", pokemonJugador2.value);
-            let url = `http://localhost:3000/duelo/calculosduelo?id=${id}&jugador1=${pokemonJugador1.value}&jugador2=${pokemonJugador2.value}`;
+            let url = `http://localhost:8080/duelo/calculosduelo?id=${id}&jugador1=${pokemonJugador1.value}&jugador2=${pokemonJugador2.value}`;
             fetch(url, {method: 'POST'})
             .catch(error => {
                 console.error('ERROR AL ENVIAR EL ATAQUE A LA BASE DE DATOS');

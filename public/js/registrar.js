@@ -59,15 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (emailTesteado) {
                 document.getElementById('failDiv').style = "height: 0px";
                 document.getElementById('failDiv').innerHTML = "";
-                fetch(`http://localhost:3000/registrarusuario?email=${email}&nombreusuario=${userNombre}&contra=${contra1}`,{ method: 'POST' })
+                fetch(`http://localhost:8080/registrarusuario?email=${email}&nombreusuario=${userNombre}&contra=${contra1}`,{ method: 'POST' })
                 .then(resultado => resultado.json())
                 .then(resultado =>{
                     if (resultado['registrado']){
-                        document.getElementById('mainIngresar').innerHTML = `<div style="text-align: center;"><div><h1>Usuario registrado correctamente</h1><img src="../pikaFeliz.png" alt="pikaFeliz" style="width: 200px; height: auto;"></div></div>`;
+                        document.getElementById('mainIngresar').innerHTML = `<div style="text-align: center;"><div><h1>Usuario registrado correctamente</h1><img src="../public/images/pikaFeliz.png" alt="pikaFeliz" style="width: 200px; height: auto;"></div></div>`;
                     }
                     else {
                         document.getElementById('failDiv').style = "height: 25px";
-                        document.getElementById('failDiv').innerHTML = `<span style="color: red;">${resultado['mensaje']}</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                        document.getElementById('failDiv').innerHTML = `<span style="color: red;">${resultado['mensaje']}</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
                     }
                 })
 

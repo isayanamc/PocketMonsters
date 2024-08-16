@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         if (emailTesteado){
             document.getElementById('failDiv').innerHTML = "";
             console.log(`${email}`);
-            fetch(`http://localhost:3000/cambiodecontra?email=${email}`,{ method: 'POST'})
+            fetch(`http://localhost:8080/cambiodecontra?email=${email}`,{ method: 'POST'})
             .then(resultado => resultado.json())
             .then(resultado =>{
                 document.getElementById('divprincipal').innerHTML = `<div style="text-align: center;"><div><h1>${resultado['mensaje']}</h1><img src="../pikaFeliz.png" alt="pikaFeliz" style="width: 200px; height: auto;"></div></div>`;
