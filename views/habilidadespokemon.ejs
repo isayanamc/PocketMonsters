@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script>
+        var documents = <%- JSON.stringify(documents) %>;
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos Pokémon</title>
+    <link rel="stylesheet" href="../public/css/habilidadespokemon.css">
+    <script src="../public/js/habilidadespokemon.js"></script>
+</head>
+<body>
+    <%- include('header') %>
+
+
+    <div class="container">
+        <h1 class="titulo">Creador de Equipos Pokémon</h1>
+
+        <div class="opciones">
+            <div class="crear-equipo">
+                <h2>Crear Equipo Nuevo</h2>
+                <div id="formularioEquipo">
+                    <label for="nombreEquipo">Nombre del Equipo:</label>
+                    <input type="text" id="nombreEquipo" required><br><br>
+
+                    <label for="pokemon">Selecciona un Pokémon:</label>
+                    <select id="pokemon" required>
+                        <% for (let i = 0; i < documents.length; i++) { %>
+                            <option value="<%= documents[i]['Name'] %>"><%= documents[i]['Name'] %></option>
+                        <% } %>
+                    </select><br><br>
+
+                    <p id="HP"></p>
+                    <p id="Ataque"></p>
+
+                    <button id="agregarPokemon" >Agregar pokemon</button>
+                </div>
+            </div>
+
+            <div id="Equipo" class="escoger-equipos">
+                <h2>Tu equipo</h2>
+                <p id="0"></p>
+                <p id="1"></p>
+                <p id="2"></p>
+                <p id="3"></p>
+                <p id="4"></p>
+                <p id="5"></p>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

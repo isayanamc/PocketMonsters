@@ -4,25 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Monsters - Recuperar contraseña</title>
-    <link rel="icon" href="./logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="./headerStyle.css">
-    <link rel="stylesheet" href="./recuperacionContra.css">
-    <script src="../recuperacionContra.js"></script>
+    <link rel="icon" href="../public/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/headerStyle.css">
+    <link rel="stylesheet" href="../public/css/recuperacionContra.css">
+    <script src="../public/js/recuperacionContra.js"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="iconosHeader">
-            <div class="divLogo">
-                <a href="home.html">
-                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
-               </a>
-            </div>
-           <div class="divBotonesHeader">
-                <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
-                <a href="/registrar" class="botonesHeader">Registrarse</a>
-            </div>
-        </div>
-    </header>
+    <%- include('header') %>
    <div class="divInputs">
         <div id= "divprincipal" class="divRecuperar">
             <h2>Recuperar contraseña</h2>

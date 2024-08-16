@@ -4,25 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duelo privado</title>
-    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../public/css/headerStyle.css">
 </head>
 <body>
-    <header class="header">
-        <div class="iconosHeader">
-            <div class="divLogo">
-                <a href="./home.html">
-                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
-               </a>
-            </div>
-           <div class="divBotonesHeader">
-                <a href="ingresar.html" class="botonesHeader">Iniciar sesión</a>
-                <a href="./registrar.html" class="botonesHeader">Registrarse</a>
-            </div>
-        </div>
-    </header>
+    <%- include('header') %>
     <div style="display: flex; flex-direction: row; justify-content: space-around;">
         <div style="display: flex; flex-direction: column;">
-            <img src="../pika.png" alt="Pikachutiste" style="height: 200px; width: 300px;" >
+            <img src="../public/images/pika.png" alt="Pikachutiste" style="height: 200px; width: 300px;" >
             <h1>Acceso denegado. Duelo privado</h1>
         </div>
     </div>

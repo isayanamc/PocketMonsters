@@ -7,25 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= resultado.infoduelo.jugador1.nombreUsuario %> Vs <%= resultado.infoduelo.jugador2.nombreUsuario %></title>
-    <link rel="stylesheet" href="../duelo.css">
-    <script src="../duelo.js" defer></script>
+    <link rel="stylesheet" href="../public/css/duelo.css">
+    <script src="../public/js/duelo.js" defer></script>
     <link rel="icon" href="../logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../headerStyle.css">
+    <link rel="stylesheet" href="../public/css/headerStyle.css">
 </head>
 <body>
-    <header class="header">
-        <div class="iconosHeader">
-            <div class="divLogo">
-                <a href="./home.html">
-                    <img src="./logo.png" alt="icono de pagina" id="iconoPagina">
-               </a>
-            </div>
-           <div class="divBotonesHeader">
-                <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
-                <a href="/registrar" class="botonesHeader">Registrarse</a>
-            </div>
-        </div>
-    </header>
+    <%- include('header') %>
     <div style="margin-top: 50px;">
         <div class="divEquipos">
             <div class="divListaDePokemons">
