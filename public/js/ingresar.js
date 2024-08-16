@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 .then(resultado =>{
                     if (resultado['existe']){
                         localStorage.setItem('pocketMonstersUsuario', resultado['usuario']);
+                        console.log(localStorage.getItem('pocketMonstersUsuario'));
                     }
                     else {
                         document.getElementById('failDiv').style = "height: 25px";
