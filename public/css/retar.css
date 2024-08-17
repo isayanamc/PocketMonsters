@@ -1,0 +1,31 @@
+.divPrincipal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.divDeRetar{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 3px;
+    border: 2px solid #4a90e2;
+    padding: 15px 50px;
+    margin: 15px;
+    width: 30%;
+    text-align: center;
+}
+
+.botonRetar{
+    color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #c9302c;
+}
