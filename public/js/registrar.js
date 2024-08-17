@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('userNombre').style.border = "";
             }
             document.getElementById('failDiv').style = "height: 25px";
-            document.getElementById('failDiv').innerHTML = `<span style="color: red;">Debes llenar los espacios en rojo</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+            document.getElementById('failDiv').innerHTML = `<span style="color: red;">Debes llenar los espacios en rojo</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
         } else {
             document.getElementById('Email').style.border = "";
             document.getElementById('contra1').style.border = "";
@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (contra1 !== contra2){
                 document.getElementById('failDiv').style = "height: 25px";
-                document.getElementById('failDiv').innerHTML = `<span style="color: red;">Las contraseñas deben ser iguales</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                document.getElementById('failDiv').innerHTML = `<span style="color: red;">Las contraseñas deben ser iguales</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
             }
             // ------------- check cantidad de caracteres y numeros --------------------------------------------------
 
             else if (contra1.length < 8){
                 document.getElementById('failDiv').style = "height: 25px";
-                document.getElementById('failDiv').innerHTML = `<span style="color: red;">La contraseña debe tener por lo menos 8 caracteres</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                document.getElementById('failDiv').innerHTML = `<span style="color: red;">La contraseña debe tener por lo menos 8 caracteres</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
             }
 
             // ----------- Check para el formato del email -------------------------------------------------------
@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(resultado =>{
                     if (resultado['registrado']){
                         document.getElementById('mainIngresar').innerHTML = `<div style="text-align: center;"><div><h1>Usuario registrado correctamente</h1><img src="../public/images/pikaFeliz.png" alt="pikaFeliz" style="width: 200px; height: auto;"></div></div>`;
+                        localStorage.setItem('pocketMonstersUsuario', userNombre);
+                        window.location.href = '/';
                     }
                     else {
                         document.getElementById('failDiv').style = "height: 25px";
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             else if (!emailTesteado) {
                 document.getElementById('failDiv').style = "height: 25px";
-                document.getElementById('failDiv').innerHTML = `<span style="color: red;">Tu email no tiene un formato correcto</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                document.getElementById('failDiv').innerHTML = `<span style="color: red;">Tu email no tiene un formato correcto</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
             }
 
         }

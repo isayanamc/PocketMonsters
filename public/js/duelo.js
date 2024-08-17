@@ -65,10 +65,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 clearInterval(intervalId);
                 let mostrarGanador = "";
                 if (localStorage.getItem('pocketMonstersUsuario') == result['resultados']['ganador']){
-                    mostrarGanador = `<h1>Ganador:</h1><h1>${result['resultados']['ganador']}</h1><img src="../pikaFeliz.png" alt="pikaFeliz.png" style="height: 200px; width: 200px;">`;
+                    mostrarGanador = `<h1>Ganador:</h1><h1>${result['resultados']['ganador']}</h1><img src="../public/images/pikaFeliz.png" alt="pikaFeliz.png" style="height: 200px; width: 200px;">`;
                 }
                 else {
-                    mostrarGanador = `<h1>Ganador:</h1><h1>${result['resultados']['ganador']}</h1><img src="../pika.png" alt="pikaFeliz.png" style="height: 200px; width: 200px;">`;
+                    mostrarGanador = `<h1>Ganador:</h1><h1>${result['resultados']['ganador']}</h1><img src="../public/images/pika.png" alt="pikaFeliz.png" style="height: 200px; width: 200px;">`;
                 }
                 document.getElementById('mostrarganadorOPerdedor').innerHTML = mostrarGanador;
                 let botonAtacar = document.getElementById('botonAtacar');

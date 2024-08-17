@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 document.getElementById('contra').style.border = "";
             }
             document.getElementById('failDiv').style = "height: 25px";
-            document.getElementById('failDiv').innerHTML = `<span style="color: red;">Llena todos espacios</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+            document.getElementById('failDiv').innerHTML = `<span style="color: red;">Llena todos espacios</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
         } else {
             document.getElementById('Email').style.border = "";
             document.getElementById('contra').style.border = "";
@@ -35,10 +35,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     if (resultado['existe']){
                         localStorage.setItem('pocketMonstersUsuario', resultado['usuario']);
                         console.log(localStorage.getItem('pocketMonstersUsuario'));
+                        window.location.href = '/';
                     }
                     else {
                         document.getElementById('failDiv').style = "height: 25px";
-                        document.getElementById('failDiv').innerHTML = `<span style="color: red;">Email o contraseña no son correctos</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                        document.getElementById('failDiv').innerHTML = `<span style="color: red;">Email o contraseña no son correctos</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
                     }
                 })
                 .catch(err => {
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             }
             else {
                 document.getElementById('failDiv').style = "height: 25px";
-                document.getElementById('failDiv').innerHTML = `<span style="color: red;">Formato del email es incorrecto</span><img src="./pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
+                document.getElementById('failDiv').innerHTML = `<span style="color: red;">Formato del email es incorrecto</span><img src="../public/images/pika.png" alt="pikachu triste" style="height: 80%; width: auto;">`;
             }
         }
     });
