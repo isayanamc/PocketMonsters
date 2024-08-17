@@ -16,6 +16,7 @@ const { MongoClient } = require('mongodb');
 const path = require('path');
 const app = express();
 const PORT = 8080;
+app.use(express.json()); 
 
 app.set('view engine', 'ejs');
 
@@ -340,7 +341,7 @@ app.post('/cambiodecontra', async (req, res) => {
                 from: usuarioDeEthereal,
                 to: usuarioDeEthereal,
                 subject: `cambio de contrasena de ${verificarEmail['nombreusuario']}`,
-                html: `<h1>Hola ${verificarEmail['nombreusuario']}</h1><span>Para cambiar tu contraseña cliquea el siguiente link:</span> <a href="http://localhost:3000/forocambiarcontrasena?email=${verificarEmail['email']}">http://localhost:3000/forocambiarcontrasena?email=${verificarEmail['email']}</a>`
+                html: `<h1>Hola ${verificarEmail['nombreusuario']}</h1><span>Para cambiar tu contraseña cliquea el siguiente link:</span> <a href="http://localhost:8080/forocambiarcontrasena?email=${verificarEmail['email']}">http://localhost:8080/forocambiarcontrasena?email=${verificarEmail['email']}</a>`
             };
             
             transportador.sendMail(opcionesCorreo, (error, info) => {
@@ -430,6 +431,263 @@ app.get('/datopokemon', async (req, res) => {
 });
 
 // /agregar equipo a la base de datos
+app.post('/agregarequipobasededatos', async (req, res) => {
+    const nombre = req.query.nombre;
+    let body = req.body;
+
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+        const buscarusuario = { "nombreusuario": nombre };
+
+        const resultado = await collection.findOne(buscarusuario);
+        if (!resultado) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        let equipoReemplazado = false;
+
+        resultado['equipos'] = resultado['equipos'].map(elemento => {
+            if (body['nombre'].toLowerCase() === elemento['nombre'].toLowerCase()) {
+                equipoReemplazado = true;
+                return body; 
+            }
+            return elemento; 
+        });
+
+        if (!equipoReemplazado) {
+            console.log('equipo nuevo');
+            resultado['equipos'].push(body);
+        }
+
+        await collection.updateOne(buscarusuario, { $set: { equipos: resultado['equipos'] } });
+
+        res.status(200).json(resultado);
+        await client.close();
+    } catch (err) {
+        console.error('Error al procesar la solicitud:', err);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
+
+
+app.get('/retar', async (req, res) => {
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+        const documents = await collection.find({}).toArray();
+        console.log(documents);
+        await client.close();
+        res.render('retar', {documents : documents});
+    }
+    catch (err){
+
+    }
+});
+
+app.post('/enviarinvitacion', async (req, res) => {
+    const retador = req.query.retador;
+    const retado = req.query.retado;
+    let equipoRetador;
+    let equipoRetado;
+    let infoDuelo = {
+        "duelo": "",
+          "infoduelo": {
+            "turnos": 0,
+            "aceptado": false,
+            "resultados": {
+              "estaterminado": false,
+              "ganador": "",
+              "perdedor": ""
+            },
+            "jugador1": {
+              "nombreUsuario": "",
+              "equipo": {
+                "0": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "1": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "2": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "3": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "4": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "5": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                }
+              }
+            },
+            "jugador2": {
+              "nombreUsuario": "",
+              "equipo": {
+                "0": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "1": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "2": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "3": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "4": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                },
+                "5": {
+                  "nombre": "",
+                  "HP": 0,
+                  "ataque": 0
+                }
+              }
+            }
+          }
+        };
+    infoDuelo['infoduelo']['jugador1']['nombreUsuario'] = retador;
+    infoDuelo['infoduelo']['jugador2']['nombreUsuario'] = retado;
+
+
+
+     const client = new MongoClient(url);
+ 
+     try {
+         await client.connect();
+         const database = client.db(dbName);
+         const collection = database.collection('duelos');
+ 
+         const cantidadDeDuelos = await collection.find({}).toArray();
+         const idDueloNuevo = cantidadDeDuelos.length.toString();
+         infoDuelo['duelo'] = idDueloNuevo;
+
+        // crear duelo en la base de datos
+        const collection2 = database.collection('usuarios');
+        const datosRetador = await collection2.findOne({ "nombreusuario": retador });
+
+        // selecciona primer equipo primario retador
+        for (let i = 0; i < datosRetador['equipos'].length; i++) {
+            if (datosRetador['equipos'][i]['primario']){
+                console.log("primario encontrado");
+                equipoRetador = datosRetador['equipos'][i]['equipo'];
+                break;
+            }
+        }
+
+        // obtener stats de cada pokemon en la base de datos en "equipoRetador"
+        const collectionPokemons = database.collection('pokemons');
+        for (let i = 0; i < equipoRetador.length; i++) {
+            let pokemonInfo = await collectionPokemons.findOne({ "Name": equipoRetador[i] });
+            infoDuelo['infoduelo']['jugador1']['equipo'][i.toString()] = {
+                "nombre": pokemonInfo['Name'],
+                "HP": pokemonInfo['HP'],
+                "ataque": pokemonInfo['Attack']
+            }
+        }
+
+        // selecciona primer equipo primario retado
+        const datosRetado = await collection2.findOne({ "nombreusuario": retado});
+        for (let i = 0; i < datosRetado['equipos'].length; i++) {
+            if (datosRetado['equipos'][i]['primario']){
+                console.log("primario encontrado");
+                equipoRetado = datosRetado['equipos'][i]['equipo'];
+                break;
+            }
+        }
+
+        // obtener stats de cada pokemon en la base de datos en "equipoRetado"
+        for (let i = 0; i < equipoRetado.length; i++) {
+            let pokemonInfo = await collectionPokemons.findOne({ "Name": equipoRetado[i] });
+            infoDuelo['infoduelo']['jugador2']['equipo'][i.toString()] = {
+                "nombre": pokemonInfo['Name'],
+                "HP": pokemonInfo['HP'],
+                "ataque": pokemonInfo['Attack']
+            }
+        }
+        console.log('----------------- duelo final -------------------');
+        for (let i = 0; i < 6; i++) {
+            console.log(infoDuelo['infoduelo']['jugador1']['equipo'][i]);
+
+        }
+
+        for (let i = 0; i < 6; i++) {
+            console.log(infoDuelo['infoduelo']['jugador2']['equipo'][i]);
+        }
+
+        const resulto = await collection.insertOne(infoDuelo);
+
+        
+        await client.close();
+
+        // enviar invitacion a retado
+        const opcionesCorreo = {
+            from: usuarioDeEthereal,
+            to: usuarioDeEthereal,
+            subject: `${retador} te ha retado a un duelo`,
+            html: `<h1>Hola ${retado}</h1><span>${retador} te ha retado a un duelo. Para aceptar el duelo cliquea el siguiente link:</span> <a href="http://localhost:8080/duelo?id=${idDueloNuevo}">http://localhost:8080/duelo?id=${idDueloNuevo}</a>`
+        };
+             
+        transportador.sendMail(opcionesCorreo, (error, info) => {
+            if (error) {
+                res.status(200).json({ mensaje: error });
+                return console.log(error);
+            }
+        });
+
+        // enviar invitacion a retador
+        const opcionesCorreo2 = {
+            from: usuarioDeEthereal,
+            to: usuarioDeEthereal,
+            subject: `Has retado a un duelo a ${retado}`,
+            html: `<h1>Hola ${retador}</h1><span>Has retado a un duelo a ${retado}. Cuando ${retado} acepte el duelo podras empezar el duelo cliqueando el siguiente link:</span> <a href="http://localhost:8080/duelo?id=${idDueloNuevo}">http://localhost:8080/duelo?id=${idDueloNuevo}</a>`
+        };
+             
+        transportador.sendMail(opcionesCorreo2, (error, info) => {
+            if (error) {
+                res.status(200).json({ mensaje: error });
+                return console.log(error);
+            }
+        });
+        res.status(200).json({ mensaje: "Usuario retado correctamente" });
+         
+     } 
+     catch (err) {
+         console.error(err);
+     } 
+});
 
 app.listen(PORT, function() {
     console.log(`Servidor corriendo en http://localhost:${PORT}/`);
