@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (localStorage.getItem('pocketMonstersUsuario') === null || localStorage.getItem('pocketMonstersUsuario') === 'null'){
+            window.location.href = '/ingresar';
+        }
+        var documents = <%- JSON.stringify(documents) %>;
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/retar.css">
+    <script src="../public/js/retar.js"></script>
+    <title>Retar jugadores</title>
+</head>
+<body>
+    <%- include('header') %>
+
+    <div class="divPrincipal">
+        <div class="divDeRetar">
+            <h3>Retar jugador</h3>
+            <select id="usuarioARetar">
+                <% for (let i = 0; i < documents.length; i++) { %>
+                    <option value="<%= documents[i]['nombreusuario'] %>"><%= documents[i]['nombreusuario'] %></option>
+                <% } %>
+            </select>
+            <button id="botonRetar" class="botonRetar">Retar</button>
+            <h3 id="mensaje"></h3>
+        </div>
+    </div>
+</body>
+</html>

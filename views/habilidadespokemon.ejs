@@ -13,7 +13,11 @@
 <body>
     <%- include('header') %>
 
-
+    <script>
+        if (localStorage.getItem('pocketMonstersUsuario') === null || localStorage.getItem('pocketMonstersUsuario') === 'null'){
+            window.location.href = '/ingresar';
+        }
+    </script>
     <div class="container">
         <h1 class="titulo">Creador de Equipos Pokémon</h1>
 
@@ -46,9 +50,12 @@
                 <p id="3"></p>
                 <p id="4"></p>
                 <p id="5"></p>
+                <button id="AgregarEquipo">Agregar equipo</button>
                 
             </div>
         </div>
+        <h1 id="mensaje"></h1>
+
     </div>
 
 </body>

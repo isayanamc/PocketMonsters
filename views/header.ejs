@@ -14,11 +14,23 @@
                 <img src="../public/images/logo.png" alt="icono de pagina" id="iconoPagina">
            </a>
         </div>
-       <div class="divBotonesHeader">
-            <a href="/ingresar" class="botonesHeader">Iniciar sesión</a>
-            <a href="/registrar" class="botonesHeader">Registrarse</a>
+       <div id="divBotonesHeader" class="divBotonesHeader">
         </div>
     </div>
+    <script>
+        console.log(`user: ${localStorage.getItem('pocketMonstersUsuario')}`);
+        if (localStorage.getItem('pocketMonstersUsuario') === null || localStorage.getItem('pocketMonstersUsuario') === 'null') {
+            document.getElementById('divBotonesHeader').innerHTML = `<a href="/ingresar" class="botonesHeader">Iniciar sesión</a><a href="/registrar" class="botonesHeader">Registrarse</a>`;
+        }
+        else {
+            document.getElementById('divBotonesHeader').innerHTML = `<a href="/perfil" class="botonesHeader">${localStorage.getItem('pocketMonstersUsuario')}</a><button class="botonesHeader" onclick="salir()">Salir</button>`;
+        }
+        function salir() {
+            localStorage.setItem('pocketMonstersUsuario', 'null');
+            window.location.reload();
+        }
+        
+    </script>
 </header>
 
 
