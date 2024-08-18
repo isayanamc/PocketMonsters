@@ -19,18 +19,30 @@ const PORT = 8080;
 app.use(express.json()); 
 
 app.set('view engine', 'ejs');
-
+app.use('/productLandingPage', express.static(path.join(__dirname, 'productLandingPage')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname));
 
 const url = 'mongodb://localhost:27017';
 const dbName = 'pocketmonters';
 
+// Ruta para servir productLandingPage.ejs como la página principal
+app.get('/', (req, res) => {
+    res.render('productLandingPage');
+});
 
 // Serve static files from the 'PocketMonsters' directory
 app.use('/PocketMonsters', express.static(path.join(__dirname, 'PocketMonsters')));
 
 // Serve static files from the 'LandingGrupal' directory
-app.use('/LandingGrupal', express.static(path.join(__dirname, 'LandingGrupal')));
+app.get('/landingGroup', (req, res) => {
+    res.render('landingGroup');
+});
+
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/images/logo.png'));
+});
+
 
 // Serve static files from the 'login-registar-recuperar' directory
 app.use('/login-registar-recuperar', express.static(path.join(__dirname, 'login-registar-recuperar')));
@@ -44,12 +56,6 @@ app.use('/Perfil', express.static(path.join(__dirname, 'Perfil')));
 // Serve static files from the 'HomePage' directory
 app.use(express.static(path.join(__dirname, 'HomePage')));
 
-// Route for the homepage
-app.get('/', (req, res) => {
-    res.render('landing');
-});
-
-app.use('/productLandingPage', express.static(path.join(__dirname, 'productLandingPage')));
 
 app.get('/duelo', async (req, res) => {
     const numeroDuelo = req.query.id;
