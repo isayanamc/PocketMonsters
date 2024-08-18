@@ -39,6 +39,11 @@ app.get('/landingGroup', (req, res) => {
     res.render('landingGroup');
 });
 
+//Serve static files from the 'product' directory
+app.get('/product', (req, res) => {
+    res.render('product');
+});
+
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/images/logo.png'));
 });
