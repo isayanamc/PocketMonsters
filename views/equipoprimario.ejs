@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo primario</title>
+    <link rel="stylesheet" href="../public/css/equipoprimario.css">
+    <script src="../public/js/equipoprimario.js"></script>
+</head>
+<body>
+    <%- include('header') %>
+
+    <script>
+        if (localStorage.getItem('pocketMonstersUsuario') === null || localStorage.getItem('pocketMonstersUsuario') === 'null'){
+            window.location.href = '/ingresar';
+        }
+    </script>
+    <div class="container">
+        <h1 class="titulo">Creador de Equipos Pokémon</h1>
+
+        <div class="opciones">
+            <div class="crear-equipo">
+                <h2>Selecciona tu equipo</h2>
+
+                <select id="EquipoUsuario" required>
+                </select><br><br>
+
+                    <button id="agregarPokemon" >Selecciona tu equipo</button>
+                </div>
+                <div id="Equipo" class="escoger-equipos">
+                    <h2 id="nombreEquipo"></h2>
+                    <p id="0"></p>
+                    <p id="1"></p>
+                    <p id="2"></p>
+                    <p id="3"></p>
+                    <p id="4"></p>
+                    <p id="5"></p>                    
+                </div>
+            </div>
+            <h1 id="mensaje"></h1>
+            
+        </div>
+
+
+    </div>
+    
+</body>
+</html>

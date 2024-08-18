@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script>
+        var documents = <%- JSON.stringify(documents) %>;
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Monsters</title>
+    <link rel="icon" href="./logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/tablas de victorias.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <script src="../public/js/tabla de victorias.js"></script>
+</head>
+<body>
+    <%- include('header') %>
+    <div class="container">
+        <h1>Tabla de Liderazgo</h1>
+        <ul id="leaderboard">
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
