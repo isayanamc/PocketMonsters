@@ -5,6 +5,7 @@
 }
 
 header {
+    width: 100%;
     position: sticky;
     display: flex;
     align-items: center;
