@@ -5,13 +5,13 @@
 }
 
 header {
-    width: 100%;
     position: sticky;
     display: flex;
     align-items: center;
     height: 80px;
     background: linear-gradient(90deg, rgb(28, 144, 237) 0%, rgb(29, 99, 237) 100%);
     padding: 0 20px;
+    width: 100%;
 }
 
 .iconosHeader{

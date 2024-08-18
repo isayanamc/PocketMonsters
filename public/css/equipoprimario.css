@@ -1,0 +1,55 @@
+/* styles.css */
+
+body {
+    font-family: "Arial", "Times New Roman", sans-serif;
+    background-color: #fff; /* Blanco */
+    color: #333; /* Color de texto principal */
+    margin: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.opciones {
+    display: flex;
+    justify-content: space-around;
+}
+
+.crear-equipo, .escoger-equipos {
+    width: 45%;
+    background-color: transparent;
+    border: 2px solid #4a90e2; /* Borde celeste */
+    color: #333; /* Texto negro */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.escoger-equipos {
+    margin-left: 20px; /* Espacio entre las dos tablas */
+}
+
+button {
+    background-color: #d9534f; /* Rojo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 20px; /* Botón redondeado */
+}
+
+button:hover {
+    background-color: #c9302c; /* Rojo oscuro al pasar el mouse */
+}
