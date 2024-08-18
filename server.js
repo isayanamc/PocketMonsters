@@ -19,35 +19,18 @@ const PORT = 8080;
 app.use(express.json()); 
 
 app.set('view engine', 'ejs');
-app.use('/productLandingPage', express.static(path.join(__dirname, 'productLandingPage')));
-app.use('/public', express.static(path.join(__dirname, 'public')));
+
 app.use(express.static(__dirname));
 
 const url = 'mongodb://localhost:27017';
 const dbName = 'pocketmonters';
 
-// Ruta para servir productLandingPage.ejs como la página principal
-app.get('/', (req, res) => {
-    res.render('productLandingPage');
-});
 
 // Serve static files from the 'PocketMonsters' directory
 app.use('/PocketMonsters', express.static(path.join(__dirname, 'PocketMonsters')));
 
 // Serve static files from the 'LandingGrupal' directory
-app.get('/landingGroup', (req, res) => {
-    res.render('landingGroup');
-});
-
-//Serve static files from the 'product' directory
-app.get('/product', (req, res) => {
-    res.render('product');
-});
-
-app.get('/favicon.ico', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/images/logo.png'));
-});
-
+app.use('/LandingGrupal', express.static(path.join(__dirname, 'LandingGrupal')));
 
 // Serve static files from the 'login-registar-recuperar' directory
 app.use('/login-registar-recuperar', express.static(path.join(__dirname, 'login-registar-recuperar')));
@@ -61,9 +44,16 @@ app.use('/Perfil', express.static(path.join(__dirname, 'Perfil')));
 // Serve static files from the 'HomePage' directory
 app.use(express.static(path.join(__dirname, 'HomePage')));
 
+// Route for the homepage
+app.get('/', (req, res) => {
+    res.render('productLandingPage');
+});
+
+app.use('/productLandingPage', express.static(path.join(__dirname, 'productLandingPage')));
 
 app.get('/duelo', async (req, res) => {
     const numeroDuelo = req.query.id;
+    const nombreDeJugador = req.query.user;
 
     const client = new MongoClient(url);
 
@@ -72,8 +62,19 @@ app.get('/duelo', async (req, res) => {
 
         const db = client.db(dbName);
         const collection = db.collection('duelos');
+        let resultado = await collection.findOne({ "duelo": numeroDuelo });
 
-        const resultado = await collection.findOne({ "duelo": numeroDuelo });
+
+        if (resultado['infoduelo']['jugador2']['nombreUsuario'] == nombreDeJugador){
+            // cambiar aceptado a true si el que accede al link es el jugador 2
+            const actualizacion = {
+               $set: {
+                   "infoduelo.aceptado": true 
+               }
+            };
+           const resultadoAceptarDuelo = await collection.updateOne(resultado, actualizacion);
+           resultado = await collection.findOne({ "duelo": numeroDuelo });
+        }
         await client.close();
 
         res.render('duelo', {resultado : resultado});
@@ -103,74 +104,112 @@ app.post('/duelo/calculosduelo', async (req, res) => {
         const collection = db.collection('duelos');
     
         const resultado = await collection.findOne({ "duelo": numeroDuelo });
-        const turno = resultado.infoduelo.turnos;
-        jugadorataque1 = resultado['infoduelo']['jugador1']['equipo'][jugador1.toString()]['ataque'];
-        jugadorataque2 = resultado['infoduelo']['jugador2']['equipo'][jugador2.toString()]['ataque'];
-    
-        if (turno % 2 === 0) {
-            const pokemonPath = `infoduelo.jugador2.equipo.${jugador2}.HP`;
-    
-            const currentHP = resultado['infoduelo']['jugador2']['equipo'][jugador2.toString()]['HP'];
-            const nuevoHP = Math.max(0, currentHP - jugadorataque1);
-    
-            const updateResult = await collection.findOneAndUpdate(
-                { "duelo": numeroDuelo },
-                { $set: { [pokemonPath]: nuevoHP } },
-                { returnDocument: 'after' }
-            );
-            
-            // for para revisar si todos los pokemons del jugador 2 estan en 0
-            for (let i = 0; i < 6; i++){
-                if (updateResult['infoduelo']['jugador2']['equipo'][i.toString()]['HP'] <= 0){
-                    checkPokemonsHp += 1; 
-                }
-            }
-            // verificar si checkPokemonsHp is igual a 6 
-            if (checkPokemonsHp == 6){
-                // actualiza la base de datos para saber que ya hay un ganador
-                const filtro = { "duelo": numeroDuelo.toString() };
-                const actulizacion = { $set: { "infoduelo.resultados.estaterminado": true } };
-                const resultadoActualizado = await collection.updateOne(filtro, actulizacion);
-                // actualiza la base de datos para saber quien fue el ganador
-                const actulizacionGanador = { $set: { "infoduelo.resultados.ganador": resultado['infoduelo']['jugador1']['nombreUsuario']} };
-                const resultadoActualizadoGanador = await collection.updateOne(filtro, actulizacionGanador);
-                // actualiza la base de datos para saber quien fue el perdedor
-                const actulizacionPerdedor = { $set: { "infoduelo.resultados.perdedor": resultado['infoduelo']['jugador2']['nombreUsuario']} };
-                const resultadoActualizadoPerdedor = await collection.updateOne(filtro, actulizacionPerdedor);
-                //Modificar la base de datos para sumarle la victoria al jugador1 y agregar una derrota al jugador2
-            }
-    
-        } else {
-            const pokemonPath = `infoduelo.jugador1.equipo.${jugador1}.HP`;
-    
-            const currentHP = resultado['infoduelo']['jugador1']['equipo'][jugador1.toString()]['HP'];
-            const nuevoHP = Math.max(0, currentHP - jugadorataque2);
-    
-            const updateResult = await collection.findOneAndUpdate(
-                { "duelo": numeroDuelo },
-                { $set: { [pokemonPath]: nuevoHP } },
-                { returnDocument: 'after' }
-            );
-            // for para revisar si todos los pokemons del jugador 1 estan en 0
-            for (let i = 0; i < 6; i++){
-                if (updateResult['infoduelo']['jugador1']['equipo'][i.toString()]['HP'] <= 0){
-                    checkPokemonsHp += 1; 
-                }
-            }
-            // verificar si checkPokemonsHp is igual a 6 
-            if (checkPokemonsHp == 6){
-                // actualiza la base de datos para saber que ya hay un ganador
-                const filtro = { "duelo": numeroDuelo.toString() };
-                const actulizacion = { $set: { "infoduelo.resultados.estaterminado": true } };
-                const resultadoActualizado = await collection.updateOne(filtro, actulizacion);
-                // actualiza la base de datos para saber quien fue el ganador
-                const actulizacionGanador = { $set: { "infoduelo.resultados.ganador": resultado['infoduelo']['jugador2']['nombreUsuario']} };
-                const resultadoActualizadoGanador = await collection.updateOne(filtro, actulizacionGanador);
-                // actualiza la base de datos para saber quien fue el perdedor
-                const actulizacionPerdedor = { $set: { "infoduelo.resultados.perdedor": resultado['infoduelo']['jugador1']['nombreUsuario']} };
-                const resultadoActualizadoPerdedor = await collection.updateOne(filtro, actulizacionPerdedor);
-                //Modificar la base de datos para sumarle la victoria al jugador2 y agregar una derrota al jugador1
+        if (!resultado['infoduelo']['resultados']['estaterminado']){
+            const turno = resultado.infoduelo.turnos;
+            jugadorataque1 = resultado['infoduelo']['jugador1']['equipo'][jugador1.toString()]['ataque'];
+            jugadorataque2 = resultado['infoduelo']['jugador2']['equipo'][jugador2.toString()]['ataque'];
 
+            if (turno % 2 === 0) {
+                const pokemonPath = `infoduelo.jugador2.equipo.${jugador2}.HP`;
+        
+                const currentHP = resultado['infoduelo']['jugador2']['equipo'][jugador2.toString()]['HP'];
+                const nuevoHP = Math.max(0, currentHP - jugadorataque1);
+        
+                const updateResult = await collection.findOneAndUpdate(
+                    { "duelo": numeroDuelo },
+                    { $set: { [pokemonPath]: nuevoHP } },
+                    { returnDocument: 'after' }
+                );
+                
+                // for para revisar si todos los pokemons del jugador 2 estan en 0
+                for (let i = 0; i < 6; i++){
+                    if (updateResult['infoduelo']['jugador2']['equipo'][i.toString()]['HP'] <= 0){
+                        checkPokemonsHp += 1; 
+                    }
+                }
+                // verificar si checkPokemonsHp is igual a 6 
+                if (checkPokemonsHp == 6){
+                    // actualiza la base de datos para saber que ya hay un ganador
+                    const filtro = { "duelo": numeroDuelo.toString() };
+                    const actulizacion = { $set: { "infoduelo.resultados.estaterminado": true } };
+                    const resultadoActualizado = await collection.updateOne(filtro, actulizacion);
+                    // actualiza la base de datos para saber quien fue el ganador
+                    const actulizacionGanador = { $set: { "infoduelo.resultados.ganador": resultado['infoduelo']['jugador1']['nombreUsuario']} };
+                    const resultadoActualizadoGanador = await collection.updateOne(filtro, actulizacionGanador);
+                    // actualiza la base de datos para saber quien fue el perdedor
+                    const actulizacionPerdedor = { $set: { "infoduelo.resultados.perdedor": resultado['infoduelo']['jugador2']['nombreUsuario']} };
+                    const resultadoActualizadoPerdedor = await collection.updateOne(filtro, actulizacionPerdedor);
+                    //Modificar la base de datos para sumarle la victoria al jugador1 y agregar una derrota al jugador2
+                    // --------------------------------------------------------------------------------------------------------------
+                    const ganador = resultado['infoduelo']['jugador1']['nombreUsuario'];
+                    const perdedor = resultado['infoduelo']['jugador2']['nombreUsuario'];
+
+                    const collectionUsuarios = db.collection('usuarios');
+
+                    const buscarGanador = await collectionUsuarios.findOne({ "nombreusuario": ganador });
+            
+                    const resultadoAgregarVictoria = await collectionUsuarios.updateOne(
+                        { nombreusuario: ganador },
+                        { $inc: { victorias: 1 } }
+                    );
+                    const buscarPerdedor = await collectionUsuarios.findOne({ "nombreusuario": perdedor });
+            
+                    const resultadoAgregarDerrota = await collectionUsuarios.updateOne(
+                        { nombreusuario: perdedor },
+                        { $inc: { derrotas: 1 } }
+                    );
+                }
+        
+            } 
+            else {
+                const pokemonPath = `infoduelo.jugador1.equipo.${jugador1}.HP`;
+        
+                const currentHP = resultado['infoduelo']['jugador1']['equipo'][jugador1.toString()]['HP'];
+                const nuevoHP = Math.max(0, currentHP - jugadorataque2);
+        
+                const updateResult = await collection.findOneAndUpdate(
+                    { "duelo": numeroDuelo },
+                    { $set: { [pokemonPath]: nuevoHP } },
+                    { returnDocument: 'after' }
+                );
+                // for para revisar si todos los pokemons del jugador 1 estan en 0
+                for (let i = 0; i < 6; i++){
+                    if (updateResult['infoduelo']['jugador1']['equipo'][i.toString()]['HP'] <= 0){
+                        checkPokemonsHp += 1; 
+                    }
+                }
+                // verificar si checkPokemonsHp is igual a 6 
+                if (checkPokemonsHp == 6){
+                    // actualiza la base de datos para saber que ya hay un ganador
+                    const filtro = { "duelo": numeroDuelo.toString() };
+                    const actulizacion = { $set: { "infoduelo.resultados.estaterminado": true } };
+                    const resultadoActualizado = await collection.updateOne(filtro, actulizacion);
+                    // actualiza la base de datos para saber quien fue el ganador
+                    const actulizacionGanador = { $set: { "infoduelo.resultados.ganador": resultado['infoduelo']['jugador2']['nombreUsuario']} };
+                    const resultadoActualizadoGanador = await collection.updateOne(filtro, actulizacionGanador);
+                    // actualiza la base de datos para saber quien fue el perdedor
+                    const actulizacionPerdedor = { $set: { "infoduelo.resultados.perdedor": resultado['infoduelo']['jugador1']['nombreUsuario']} };
+                    const resultadoActualizadoPerdedor = await collection.updateOne(filtro, actulizacionPerdedor);
+                    //Modificar la base de datos para sumarle la victoria al jugador2 y agregar una derrota al jugador1
+                    // --------------------------------------------------------------------------------------------------------------
+                    const ganador = resultado['infoduelo']['jugador2']['nombreUsuario'];
+                    const perdedor = resultado['infoduelo']['jugador1']['nombreUsuario'];
+                    
+                    const collectionUsuarios = db.collection('usuarios');
+                    
+                    const buscarGanador = await collectionUsuarios.findOne({ "nombreusuario": ganador });
+                                
+                    const resultadoAgregarVictoria = await collectionUsuarios.updateOne(
+                        { nombreusuario: ganador },
+                        { $inc: { victorias: 1 } }
+                    );
+                    const buscarPerdedor = await collectionUsuarios.findOne({ "nombreusuario": perdedor });
+                                
+                    const resultadoAgregarDerrota = await collectionUsuarios.updateOne(
+                        { nombreusuario: perdedor },
+                        { $inc: { derrotas: 1 } }
+                    );
+                }
             }
         }
         await client.close();
@@ -235,6 +274,10 @@ app.get('/actualizardatos/duelo', async (req, res) => {
 
 app.get('/denegarduelo', (req, res) => {
     res.render('denegarduelo');
+});
+
+app.get('/duelenoaceptado', (req, res) => {
+    res.render('duelenoaceptado');
 });
 
 app.get('/ingresar', (req, res) => {
@@ -459,6 +502,9 @@ app.post('/agregarequipobasededatos', async (req, res) => {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
 
+        if (resultado['equipos'].length === 0){
+            body['primario'] = true;
+        }
         let equipoReemplazado = false;
 
         resultado['equipos'] = resultado['equipos'].map(elemento => {
@@ -505,6 +551,9 @@ app.get('/retar', async (req, res) => {
 app.post('/enviarinvitacion', async (req, res) => {
     const retador = req.query.retador;
     const retado = req.query.retado;
+    let retadorEquipoPrimario = false;
+    let retadoEquipoPrimario = false;
+    let mensajeDeError = "";
     let equipoRetador;
     let equipoRetado;
     let infoDuelo = {
@@ -599,100 +648,136 @@ app.post('/enviarinvitacion', async (req, res) => {
      try {
          await client.connect();
          const database = client.db(dbName);
-         const collection = database.collection('duelos');
- 
-         const cantidadDeDuelos = await collection.find({}).toArray();
-         const idDueloNuevo = cantidadDeDuelos.length.toString();
-         infoDuelo['duelo'] = idDueloNuevo;
 
-        // crear duelo en la base de datos
-        const collection2 = database.collection('usuarios');
-        const datosRetador = await collection2.findOne({ "nombreusuario": retador });
+        // verificar que los jugadores tienen equipo primario 
+         const collectionDeUsuarios = database.collection('usuarios');
+         const infoRetador = await collectionDeUsuarios.findOne({"nombreusuario":retador});
+         const infoRetado = await collectionDeUsuarios.findOne({"nombreusuario":retado});
 
-        // selecciona primer equipo primario retador
-        for (let i = 0; i < datosRetador['equipos'].length; i++) {
-            if (datosRetador['equipos'][i]['primario']){
-                console.log("primario encontrado");
-                equipoRetador = datosRetador['equipos'][i]['equipo'];
+        if (infoRetador['equipos'].length === 0 || infoRetado['equipos'].length === 0){
+            retadorEquipoPrimario =false;
+            retadoEquipoPrimario =false;
+            mensajeDeError = "Tu cuenta o la del jugador al que retaste no tiene equipos";
+        }
+         for (let i = 0; i < infoRetador['equipos'].length; i++) {
+            if (infoRetador['equipos'][i]['primario']){
+                retadorEquipoPrimario =true;
                 break;
             }
-        }
-
-        // obtener stats de cada pokemon en la base de datos en "equipoRetador"
-        const collectionPokemons = database.collection('pokemons');
-        for (let i = 0; i < equipoRetador.length; i++) {
-            let pokemonInfo = await collectionPokemons.findOne({ "Name": equipoRetador[i] });
-            infoDuelo['infoduelo']['jugador1']['equipo'][i.toString()] = {
-                "nombre": pokemonInfo['Name'],
-                "HP": pokemonInfo['HP'],
-                "ataque": pokemonInfo['Attack']
-            }
-        }
-
-        // selecciona primer equipo primario retado
-        const datosRetado = await collection2.findOne({ "nombreusuario": retado});
-        for (let i = 0; i < datosRetado['equipos'].length; i++) {
-            if (datosRetado['equipos'][i]['primario']){
-                console.log("primario encontrado");
-                equipoRetado = datosRetado['equipos'][i]['equipo'];
+         }
+         for (let i = 0; i < infoRetado['equipos'].length; i++) {
+            if (infoRetado['equipos'][i]['primario']){
+                retadoEquipoPrimario =true;
                 break;
             }
-        }
+         }
 
-        // obtener stats de cada pokemon en la base de datos en "equipoRetado"
-        for (let i = 0; i < equipoRetado.length; i++) {
-            let pokemonInfo = await collectionPokemons.findOne({ "Name": equipoRetado[i] });
-            infoDuelo['infoduelo']['jugador2']['equipo'][i.toString()] = {
-                "nombre": pokemonInfo['Name'],
-                "HP": pokemonInfo['HP'],
-                "ataque": pokemonInfo['Attack']
+
+        if (retadorEquipoPrimario && retadoEquipoPrimario) {
+            console.log("no hay equipo");
+
+            const collection = database.collection('duelos');
+    
+            const cantidadDeDuelos = await collection.find({}).toArray();
+            const idDueloNuevo = cantidadDeDuelos.length.toString();
+            infoDuelo['duelo'] = idDueloNuevo;
+
+            // crear duelo en la base de datos
+            const collection2 = database.collection('usuarios');
+            const datosRetador = await collection2.findOne({ "nombreusuario": retador });
+
+            // selecciona primer equipo primario retador
+            for (let i = 0; i < datosRetador['equipos'].length; i++) {
+                if (datosRetador['equipos'][i]['primario']){
+                    console.log("primario encontrado");
+                    equipoRetador = datosRetador['equipos'][i]['equipo'];
+                    break;
+                }
             }
-        }
-        console.log('----------------- duelo final -------------------');
-        for (let i = 0; i < 6; i++) {
-            console.log(infoDuelo['infoduelo']['jugador1']['equipo'][i]);
 
-        }
-
-        for (let i = 0; i < 6; i++) {
-            console.log(infoDuelo['infoduelo']['jugador2']['equipo'][i]);
-        }
-
-        const resulto = await collection.insertOne(infoDuelo);
-
-        
-        await client.close();
-
-        // enviar invitacion a retado
-        const opcionesCorreo = {
-            from: usuarioDeEthereal,
-            to: usuarioDeEthereal,
-            subject: `${retador} te ha retado a un duelo`,
-            html: `<h1>Hola ${retado}</h1><span>${retador} te ha retado a un duelo. Para aceptar el duelo cliquea el siguiente link:</span> <a href="http://localhost:8080/duelo?id=${idDueloNuevo}">http://localhost:8080/duelo?id=${idDueloNuevo}</a>`
-        };
-             
-        transportador.sendMail(opcionesCorreo, (error, info) => {
-            if (error) {
-                res.status(200).json({ mensaje: error });
-                return console.log(error);
+            // obtener stats de cada pokemon en la base de datos en "equipoRetador"
+            const collectionPokemons = database.collection('pokemons');
+            for (let i = 0; i < equipoRetador.length; i++) {
+                let pokemonInfo = await collectionPokemons.findOne({ "Name": equipoRetador[i] });
+                infoDuelo['infoduelo']['jugador1']['equipo'][i.toString()] = {
+                    "nombre": pokemonInfo['Name'],
+                    "HP": pokemonInfo['HP'],
+                    "ataque": pokemonInfo['Attack']
+                }
             }
-        });
 
-        // enviar invitacion a retador
-        const opcionesCorreo2 = {
-            from: usuarioDeEthereal,
-            to: usuarioDeEthereal,
-            subject: `Has retado a un duelo a ${retado}`,
-            html: `<h1>Hola ${retador}</h1><span>Has retado a un duelo a ${retado}. Cuando ${retado} acepte el duelo podras empezar el duelo cliqueando el siguiente link:</span> <a href="http://localhost:8080/duelo?id=${idDueloNuevo}">http://localhost:8080/duelo?id=${idDueloNuevo}</a>`
-        };
-             
-        transportador.sendMail(opcionesCorreo2, (error, info) => {
-            if (error) {
-                res.status(200).json({ mensaje: error });
-                return console.log(error);
+            // selecciona primer equipo primario retado
+            const datosRetado = await collection2.findOne({ "nombreusuario": retado});
+            for (let i = 0; i < datosRetado['equipos'].length; i++) {
+                if (datosRetado['equipos'][i]['primario']){
+                    console.log("primario encontrado");
+                    equipoRetado = datosRetado['equipos'][i]['equipo'];
+                    break;
+                }
             }
-        });
-        res.status(200).json({ mensaje: "Usuario retado correctamente" });
+
+            // obtener stats de cada pokemon en la base de datos en "equipoRetado"
+            for (let i = 0; i < equipoRetado.length; i++) {
+                let pokemonInfo = await collectionPokemons.findOne({ "Name": equipoRetado[i] });
+                infoDuelo['infoduelo']['jugador2']['equipo'][i.toString()] = {
+                    "nombre": pokemonInfo['Name'],
+                    "HP": pokemonInfo['HP'],
+                    "ataque": pokemonInfo['Attack']
+                }
+            }
+            console.log('----------------- duelo final -------------------');
+            for (let i = 0; i < 6; i++) {
+                console.log(infoDuelo['infoduelo']['jugador1']['equipo'][i]);
+
+            }
+
+            for (let i = 0; i < 6; i++) {
+                console.log(infoDuelo['infoduelo']['jugador2']['equipo'][i]);
+            }
+
+            const resulto = await collection.insertOne(infoDuelo);
+
+            
+            await client.close();
+
+            // enviar invitacion a retado
+            const opcionesCorreo = {
+                from: usuarioDeEthereal,
+                to: usuarioDeEthereal,
+                subject: `${retador} te ha retado a un duelo`,
+                html: `<h1>Hola ${retado}</h1><span>${retador} te ha retado a un duelo. Para aceptar el duelo cliquea el siguiente link:</span> <a href="http://localhost:8080/duelo?id=${idDueloNuevo}&user=${retado}">http://localhost:8080/duelo?id=${idDueloNuevo}&user=${retado}</a>`
+            };
+                
+            transportador.sendMail(opcionesCorreo, (error, info) => {
+                if (error) {
+                    res.status(200).json({ mensaje: error });
+                    return console.log(error);
+                }
+            });
+
+            // enviar invitacion a retador
+            const opcionesCorreo2 = {
+                from: usuarioDeEthereal,
+                to: usuarioDeEthereal,
+                subject: `Has retado a un duelo a ${retado}`,
+                html: `<h1>Hola ${retador}</h1><span>Has retado a un duelo a ${retado}. Cuando ${retado} acepte el duelo podras empezar el duelo cliqueando el siguiente link:</span> <a href="http://localhost:8080/duelo?id=${idDueloNuevo}&user=${retador}">http://localhost:8080/duelo?id=${idDueloNuevo}&user=${retador}</a>`
+            };
+                
+            transportador.sendMail(opcionesCorreo2, (error, info) => {
+                if (error) {
+                    res.status(200).json({ mensaje: error });
+                    return console.log(error);
+                }
+            });
+            res.status(200).json({ mensaje: "Usuario retado correctamente" });
+        }
+        else {
+            await client.close();
+            if (mensajeDeError == ""){
+                mensajeDeError = "Tu cuenta o la del jugador al que retaste no tiene equipo primario."
+            }
+            res.status(200).json({ mensaje: mensajeDeError });
+        }
          
      } 
      catch (err) {
@@ -700,6 +785,94 @@ app.post('/enviarinvitacion', async (req, res) => {
      } 
 });
 
+app.get('/estadisticas', async (req, res) => {
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+        const documents = await collection.find({}).toArray();
+        console.log(documents);
+        await client.close();
+        res.render('estadisticas', {documents : documents});
+    }
+    catch (err){
+
+    }
+});
+
+app.get('/misequipos', (req, res) => {
+    res.render('equipoprimario');
+});
+
+app.get('/userinfo', async (req, res) => {
+    const usuario = req.query.usuario;
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+        const documents = await collection.findOne({'nombreusuario':usuario});
+        console.log(documents);
+        await client.close();
+        res.status(200).json(documents);
+    }
+    catch (err){
+
+    }
+});
+
+app.post('/seleccionarequipoprimario', async (req, res) => {
+    const equiposeleccionado = req.query.equiposeleccionado;
+    const usuario = req.query.usuario;
+
+    const client = new MongoClient(url);
+
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection('usuarios');
+
+        // Busca el usuario
+        const documents = await collection.findOne({ 'nombreusuario': usuario });
+
+        // Pone todos los equipos en false primero
+        await collection.updateOne(
+            { nombreusuario: usuario },
+            { $set: { "equipos.$[].primario": false } }
+        );
+
+        // Pone el equipo seleccionado como primario 
+        await collection.updateOne(
+            { nombreusuario: usuario, "equipos.nombre": equiposeleccionado },
+            { $set: { "equipos.$.primario": true } }
+        );
+
+        await client.close();
+        res.status(200).json({ mensaje:"Equipo seleccionado correctamente"});
+
+    } catch (err) {
+        console.error(err);
+        await client.close();
+        res.status(500).json({ message: 'Error al seleccionar equipo' });
+    }
+});
+
+//Serve static files from the 'product' directory
+app.get('/product', (req, res) => {
+    res.render('product');
+});
+
+// Serve static files from the 'LandingGrupal' directory
+app.get('/landingGroup', (req, res) => {
+    res.render('landingGroup');
+});
+
+
+
+
 app.listen(PORT, function() {
     console.log(`Servidor corriendo en http://localhost:${PORT}/`);
-  });
+});
