@@ -1,0 +1,280 @@
+[{
+  "_id": {
+    "$oid": "66b79d25183d7838ee028b31"
+  },
+  "email": "pablo@gmail.com",
+  "nombreusuario": "pablo",
+  "victorias": 6,
+  "derrotas": 6,
+  "contrasena": "12345678",
+  "equipos": [
+    {
+      "primario": true,
+      "equipo1": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    },
+    {
+      "primario": false,
+      "equipo2": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66b79d87183d7838ee028b33"
+  },
+  "email": "jugador2@gmail.com",
+  "nombreusuario": "jugador2",
+  "victorias": 6,
+  "derrotas": 6,
+  "contrasena": "jugador222",
+  "equipos": [
+    {
+      "primario": true,
+      "equipo1": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    },
+    {
+      "primario": false,
+      "equipo2": [
+        "Squirtle",
+        "Jigglypuff",
+        "Nidorino",
+        "Wartortle",
+        "Charizard",
+        "Golbat"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66b7c911c34957c53f9aa64b"
+  },
+  "email": "jugador666@gmail.xxxxxx",
+  "nombreusuario": "jugador222x",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66b7cf6bf25eead9861ef473"
+  },
+  "email": "fdar@gmail.com",
+  "nombreusuario": "pablo9407",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": [
+    {
+      "primario": true,
+      "nombre": "equipotest",
+      "equipo": [
+        "Bulbasaur",
+        "Ivysaur",
+        "Charmander",
+        "Charizard",
+        "Squirtle",
+        "Caterpie"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66b7dc90f25eead9861ef474"
+  },
+  "email": "fdar@gmaippl.com",
+  "nombreusuario": "pablo94077",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "123456789",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66b7dd02f25eead9861ef475"
+  },
+  "email": "fdar@gmaippl.comz",
+  "nombreusuario": "pablo94071",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "12345678",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66beb10865f8d1b269ca5d25"
+  },
+  "email": "gggg@gmail.com",
+  "nombreusuario": "jugador23",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "12345678",
+  "equipos": [
+    {
+      "primario": true,
+      "nombre": "Equipo1",
+      "equipo": [
+        "Pidgeot",
+        "Ivysaur",
+        "Charmander",
+        "Charizard",
+        "Squirtle",
+        "Blastoise"
+      ]
+    },
+    {
+      "primario": true,
+      "nombre": "Equipo11",
+      "equipo": [
+        "Pidgeot",
+        "Ivysaur",
+        "Charmander",
+        "Charizard",
+        "Squirtle",
+        "Blastoise"
+      ]
+    },
+    {
+      "primario": true,
+      "nombre": "Equipo666",
+      "equipo": [
+        "Pidgeotto",
+        "Charmeleon",
+        "Caterpie",
+        "Bulbasaur",
+        "Wigglytuff",
+        "Nidoking"
+      ]
+    },
+    {
+      "primario": true,
+      "nombre": "gg",
+      "equipo": [
+        "Pidgeotto",
+        "Charmeleon",
+        "Caterpie",
+        "Bulbasaur",
+        "Wigglytuff",
+        "Nidoking"
+      ]
+    },
+    {
+      "primario": true,
+      "nombre": "cenfoteam",
+      "equipo": [
+        "Bulbasaur",
+        "Venusaur",
+        "Charizard",
+        "Blastoise",
+        "Metapod",
+        "Weedle"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c0f5903403ec2bf9e24bdc"
+  },
+  "email": "pablotest@gmail.com",
+  "nombreusuario": "pablotest",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "password666",
+  "equipos": [
+    {
+      "primario": true,
+      "nombre": "equipo999",
+      "equipo": [
+        "Ivysaur",
+        "Venusaur",
+        "Venomoth",
+        "Venonat",
+        "Gloom",
+        "Nidoran♂"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c0fad8fd6848f6b247e95c"
+  },
+  "email": "gg666@gmail.com",
+  "nombreusuario": "ashtest",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "12345678",
+  "equipos": [
+    {
+      "primario": true,
+      "nombre": "test",
+      "equipo": [
+        "Charmander",
+        "Charmeleon",
+        "Charizard",
+        "Squirtle",
+        "Bulbasaur",
+        "Vulpix"
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66c10445e7017d8458e8ff7c"
+  },
+  "email": "gg666@gm.com",
+  "nombreusuario": "gg666",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "12345678",
+  "equipos": []
+},
+{
+  "_id": {
+    "$oid": "66c11465bb25a03be7424827"
+  },
+  "email": "gg66@gmail.com",
+  "nombreusuario": "pablo777",
+  "victorias": 0,
+  "derrotas": 0,
+  "contrasena": "11111111",
+  "equipos": [
+    {
+      "primario": true,
+      "nombre": "equpo897852",
+      "equipo": [
+        "Bulbasaur",
+        "Ivysaur",
+        "Metapod",
+        "Charmander",
+        "Zubat",
+        "Wigglytuff"
+      ]
+    }
+  ]
+}]

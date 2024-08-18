@@ -1,0 +1,595 @@
+[{
+  "_id": {
+    "$oid": "66b17855f5907eb265851e8c"
+  },
+  "duelo": "0",
+  "infoduelo": {
+    "turnos": 19,
+    "aceptado": true,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablo",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 4,
+          "ataque": 100
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 100
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 100
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 29,
+          "ataque": 100
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 100
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 55,
+          "ataque": 100
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador23",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 100,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 100,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 0,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 0,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 0,
+          "ataque": 10
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66b6a67b3675bd09ce33c462"
+  },
+  "duelo": "1",
+  "infoduelo": {
+    "turnos": 0,
+    "aceptado": true,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablo666",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 59,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 75,
+          "ataque": 10
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador666",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 59,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 78,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 0,
+          "ataque": 10
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66b6a7083675bd09ce33c463"
+  },
+  "duelo": "2",
+  "infoduelo": {
+    "turnos": 0,
+    "aceptado": true,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablo",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 59,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 75,
+          "ataque": 10
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador23",
+      "equipo": {
+        "0": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 10
+        },
+        "1": {
+          "nombre": "Jigglypuff",
+          "HP": 115,
+          "ataque": 10
+        },
+        "2": {
+          "nombre": "Nidorino",
+          "HP": 61,
+          "ataque": 10
+        },
+        "3": {
+          "nombre": "Wartortle",
+          "HP": 59,
+          "ataque": 10
+        },
+        "4": {
+          "nombre": "Charizard",
+          "HP": 78,
+          "ataque": 10
+        },
+        "5": {
+          "nombre": "Golbat",
+          "HP": 0,
+          "ataque": 10
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66c0c919ff1d2bf7c18e0926"
+  },
+  "duelo": "3",
+  "infoduelo": {
+    "turnos": 17,
+    "aceptado": false,
+    "resultados": {
+      "estaterminado": true,
+      "ganador": "pablo9407",
+      "perdedor": "jugador23"
+    },
+    "jugador1": {
+      "nombreUsuario": "pablo9407",
+      "equipo": {
+        "0": {
+          "nombre": "Bulbasaur",
+          "HP": 0,
+          "ataque": 49
+        },
+        "1": {
+          "nombre": "Ivysaur",
+          "HP": 0,
+          "ataque": 62
+        },
+        "2": {
+          "nombre": "Charmander",
+          "HP": 0,
+          "ataque": 52
+        },
+        "3": {
+          "nombre": "Charizard",
+          "HP": 16,
+          "ataque": 84
+        },
+        "4": {
+          "nombre": "Squirtle",
+          "HP": 0,
+          "ataque": 48
+        },
+        "5": {
+          "nombre": "Caterpie",
+          "HP": 0,
+          "ataque": 30
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador23",
+      "equipo": {
+        "0": {
+          "nombre": "Bulbasaur",
+          "HP": 0,
+          "ataque": 49
+        },
+        "1": {
+          "nombre": "Ivysaur",
+          "HP": 0,
+          "ataque": 62
+        },
+        "2": {
+          "nombre": "Charmander",
+          "HP": 0,
+          "ataque": 52
+        },
+        "3": {
+          "nombre": "Charizard",
+          "HP": 0,
+          "ataque": 84
+        },
+        "4": {
+          "nombre": "Squirtle",
+          "HP": 0,
+          "ataque": 48
+        },
+        "5": {
+          "nombre": "Caterpie",
+          "HP": 0,
+          "ataque": 30
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66c0f6843403ec2bf9e24bdd"
+  },
+  "duelo": "4",
+  "infoduelo": {
+    "turnos": 13,
+    "aceptado": false,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablotest",
+      "equipo": {
+        "0": {
+          "nombre": "Ivysaur",
+          "HP": 0,
+          "ataque": 62
+        },
+        "1": {
+          "nombre": "Venusaur",
+          "HP": 0,
+          "ataque": 82
+        },
+        "2": {
+          "nombre": "Venomoth",
+          "HP": 70,
+          "ataque": 65
+        },
+        "3": {
+          "nombre": "Venonat",
+          "HP": 60,
+          "ataque": 55
+        },
+        "4": {
+          "nombre": "Gloom",
+          "HP": 0,
+          "ataque": 65
+        },
+        "5": {
+          "nombre": "Nidoran♂",
+          "HP": 0,
+          "ataque": 57
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "jugador23",
+      "equipo": {
+        "0": {
+          "nombre": "Ivysaur",
+          "HP": 0,
+          "ataque": 62
+        },
+        "1": {
+          "nombre": "Venusaur",
+          "HP": 0,
+          "ataque": 82
+        },
+        "2": {
+          "nombre": "Venomoth",
+          "HP": 70,
+          "ataque": 65
+        },
+        "3": {
+          "nombre": "Venonat",
+          "HP": 0,
+          "ataque": 55
+        },
+        "4": {
+          "nombre": "Gloom",
+          "HP": 0,
+          "ataque": 65
+        },
+        "5": {
+          "nombre": "Nidoran♂",
+          "HP": 0,
+          "ataque": 57
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66c10095e7017d8458e8ff7b"
+  },
+  "duelo": "5",
+  "infoduelo": {
+    "turnos": 0,
+    "aceptado": false,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablotest",
+      "equipo": {
+        "0": {
+          "nombre": "Ivysaur",
+          "HP": 60,
+          "ataque": 62
+        },
+        "1": {
+          "nombre": "Venusaur",
+          "HP": 80,
+          "ataque": 82
+        },
+        "2": {
+          "nombre": "Venomoth",
+          "HP": 70,
+          "ataque": 65
+        },
+        "3": {
+          "nombre": "Venonat",
+          "HP": 60,
+          "ataque": 55
+        },
+        "4": {
+          "nombre": "Gloom",
+          "HP": 60,
+          "ataque": 65
+        },
+        "5": {
+          "nombre": "Nidoran♂",
+          "HP": 46,
+          "ataque": 57
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "ashtest",
+      "equipo": {
+        "0": {
+          "nombre": "Charmander",
+          "HP": 39,
+          "ataque": 52
+        },
+        "1": {
+          "nombre": "Charmeleon",
+          "HP": 58,
+          "ataque": 64
+        },
+        "2": {
+          "nombre": "Charizard",
+          "HP": 78,
+          "ataque": 84
+        },
+        "3": {
+          "nombre": "Squirtle",
+          "HP": 44,
+          "ataque": 48
+        },
+        "4": {
+          "nombre": "Bulbasaur",
+          "HP": 45,
+          "ataque": 49
+        },
+        "5": {
+          "nombre": "Vulpix",
+          "HP": 38,
+          "ataque": 41
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66c14c278fc22d95f0fb1326"
+  },
+  "duelo": "6",
+  "infoduelo": {
+    "turnos": 0,
+    "aceptado": true,
+    "resultados": {
+      "estaterminado": false,
+      "ganador": "",
+      "perdedor": ""
+    },
+    "jugador1": {
+      "nombreUsuario": "pablotest",
+      "equipo": {
+        "0": {
+          "nombre": "Ivysaur",
+          "HP": 60,
+          "ataque": 62
+        },
+        "1": {
+          "nombre": "Venusaur",
+          "HP": 80,
+          "ataque": 82
+        },
+        "2": {
+          "nombre": "Venomoth",
+          "HP": 70,
+          "ataque": 65
+        },
+        "3": {
+          "nombre": "Venonat",
+          "HP": 60,
+          "ataque": 55
+        },
+        "4": {
+          "nombre": "Gloom",
+          "HP": 60,
+          "ataque": 65
+        },
+        "5": {
+          "nombre": "Nidoran♂",
+          "HP": 46,
+          "ataque": 57
+        }
+      }
+    },
+    "jugador2": {
+      "nombreUsuario": "pablo777",
+      "equipo": {
+        "0": {
+          "nombre": "Bulbasaur",
+          "HP": 45,
+          "ataque": 49
+        },
+        "1": {
+          "nombre": "Ivysaur",
+          "HP": 60,
+          "ataque": 62
+        },
+        "2": {
+          "nombre": "Metapod",
+          "HP": 50,
+          "ataque": 20
+        },
+        "3": {
+          "nombre": "Charmander",
+          "HP": 39,
+          "ataque": 52
+        },
+        "4": {
+          "nombre": "Zubat",
+          "HP": 40,
+          "ataque": 45
+        },
+        "5": {
+          "nombre": "Wigglytuff",
+          "HP": 140,
+          "ataque": 70
+        }
+      }
+    }
+  }
+}]
