@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const nombre = document.getElementById('pokemon').value;
         fetch(`http://localhost:8080/datopokemon?nombre=${nombre}`)
         .then(response => {
-            console.log(response); // Log the entire response object
+            console.log(response); 
             return response.json();
         })
         .then(data => {
-            console.log(data['HP']); // Log the parsed JSON data
+            console.log(data['HP']);
             console.log(data['Attack']);
             document.getElementById('HP').innerHTML = `HP: ${data['HP']}`;
             document.getElementById('Ataque').innerHTML = `Ataque: ${data['Attack']}`;
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             }
             else if (listaPokemons.length == 6) {
                 const nuevoEquipo = {
-                    "primario": true,
+                    "primario": false,
                     "nombre": nombreEquipo,
                     'equipo' : listaPokemons
                 };

@@ -2,11 +2,16 @@ const id = resultado['duelo'];
 const jugadorduelo1 = resultado['infoduelo']['jugador1']['nombreUsuario'];
 const jugadorduelo2 = resultado['infoduelo']['jugador2']['nombreUsuario'];
 let soyjugador1 = false;
+console.log(resultado['infoduelo']['jugador2']['nombreUsuario']);
 
 
 // verifica si los ususuarios son los correctos para jugar el duelo 
 if (localStorage.getItem('pocketMonstersUsuario') != jugadorduelo1 && localStorage.getItem('pocketMonstersUsuario') != jugadorduelo2) {
     window.location.href = '/denegarduelo';
+}
+
+if (!resultado['infoduelo']['aceptado']){
+    window.location.href = '/duelenoaceptado';
 }
 
 // verificar si el ususario es el jugador 1 
@@ -15,7 +20,6 @@ if (jugadorduelo1 == localStorage.getItem('pocketMonstersUsuario')){
 }
 
 document.addEventListener('DOMContentLoaded', ()=> {
-    
     let intervalId;
 
     async function actualizardatos (){
@@ -76,7 +80,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 botonAtacar.classList.add('disabled-button');
                 botonAtacar.innerHTML = "Duelo Finalizado";
             }
-            console.log('Conecando');
             
         })
         .catch(error => {
@@ -109,5 +112,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         }
 
     });
+    
+
 
 });

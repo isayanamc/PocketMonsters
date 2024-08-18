@@ -1,19 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const leaderboard = [
-        { username: 'Usuario1', victories: 15 },
-        { username: 'Usuario2', victories: 12 },
-        { username: 'Usuario3', victories: 10 },
-        { username: 'Usuario4', victories: 8 },
-        { username: 'Usuario5', victories: 5 }
-    ];
-
+    console.log(documents);
+    
+    
     const ul = document.getElementById('leaderboard');
 
-    leaderboard
-        .sort((a, b) => b.victories - a.victories) // Ordenar por número de victorias
+    
+    documents
+        .sort((a, b) => b.victorias - a.victorias)
         .forEach(user => {
             const li = document.createElement('li');
-            li.innerHTML = `<span class="username">${user.username}</span><span class="victories">${user.victories}</span>`;
+            li.innerHTML = `<span class="username">${user.nombreusuario}</span><span class="victorias">${user.victorias}</span>`;
             ul.appendChild(li);
-        });
+        })
 });
